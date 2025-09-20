@@ -55,10 +55,11 @@ export default function CombinedFooter() {
             <span>Send Email</span>
           </div>
 
-          <div className="flex items-center mr-0 md:mr-30 mb-0 md:mb-40 gap-3 text-[24px] md:text-[40px] font-semibold cursor-pointer hover:text-blue-400">
-            <MessageSquare className="w-6 h-6 md:w-10 md:h-10 text-blue-500" />
-            <span>Send SMS</span>
-          </div>
+        <div className="flex items-center mr-0 md:mr-[140px] mb-0 md:mb-40 gap-3 text-[24px] md:text-[40px] font-semibold cursor-pointer hover:text-blue-400">
+  <MessageSquare className="w-6 h-6 md:w-10 md:h-10 text-blue-500" />
+  <span>Send SMS</span>
+</div>
+
         </div>
       </div>
     </div>

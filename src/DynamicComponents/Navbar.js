@@ -139,9 +139,10 @@ ${isMobile ? (showProductsDropdown ? 'opacity-100 visible' : 'opacity-0 invisibl
 
             {showSearch && (
               <div className="absolute top-full mt-2 w-92 ml-[-160px]">
-                <div className="flex justify-center">
-                  <div className="w-3 h-3 bg-white rotate-45 border-l border-t border-gray-300"></div>
-                </div>
+               <div className="flex justify-center">
+  <div className="w-3 h-3 bg-white rotate-45 border-l border-t border-gray-300 ml-[160px] md:ml-0"></div>
+</div>
+
 
                 <input
                   type="text"

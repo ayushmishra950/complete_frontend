@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SliderWithContent = () => {
@@ -10,6 +10,14 @@ const SliderWithContent = () => {
 
   const navigate = useNavigate();
   const goHome = () => navigate('/home');
+
+  // Ref for horizontal scrolling of products row on mobile
+  const productsRowRef = useRef(null);
+  const scrollBy = (offset) => {
+    if (productsRowRef.current) {
+      productsRowRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
 
   const slides = [
     {
@@ -41,7 +49,7 @@ const SliderWithContent = () => {
 
   const products = [
     {
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=200&h=150&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&crop=center",
       title: "E Loader Battery Rickshaw with Lithium Battery"
     },
     {
@@ -154,7 +162,7 @@ const SliderWithContent = () => {
         </div>
 
         <div className="w-full md:w-1/2 flex flex-col h-full mt-5 md:mt-0">
-          <div className="h-auto md:h-[300px] bg-gray-800 text-white relative">
+          <div className="h-auto md:h-[325px] bg-gray-800 text-white relative">
             <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-600 relative">
               <div className="flex space-x-4 sm:space-x-6">
                 <div 
@@ -243,12 +251,15 @@ const SliderWithContent = () => {
               </div>
             </div>
 
-            <div className="flex items-start justify-center p-4 flex-wrap md:flex-nowrap">
-              <button className="hidden sm:block text-white p-2 text-7xl font-bold hover:text-blue-300 mt-13">&#8249;</button>
-              <div className="flex flex-wrap gap-4 mx-4 justify-center md:flex-nowrap md:gap-0 md:space-x-4">
+            <div className="flex items-center justify-center p-4 flex-nowrap">
+              <button onClick={() => scrollBy(-240)} className="block text-white p-2 text-5xl md:text-7xl font-bold hover:text-blue-300 mt-2 md:mt-17">&#8249;</button>
+              <div ref={productsRowRef} className="flex flex-nowrap overflow-x-auto mx-4 gap-4 justify-start md:justify-center md:overflow-visible md:gap-0 md:space-x-4">
                 {products.map((product, index) => (
-                  <div key={index} className="bg-gray-700 rounded-lg p-3 text-center min-w-[140px] sm:min-w-[160px] md:min-w-[180px] cursor-pointer" onClick={goHome}>
-                    <img 
+<div 
+    key={index} 
+    className="bg-gray-700 rounded-lg p-3 text-center cursor-pointer w-[220px] h-[235px]" 
+    onClick={goHome}
+  >                    <img 
                       src={product.image} 
                       alt={product.title}
                       className="w-full h-30 object-cover rounded mb-2"
@@ -257,11 +268,11 @@ const SliderWithContent = () => {
                   </div>
                 ))}
               </div>
-              <button className="hidden sm:block text-white p-2 text-7xl font-bold hover:text-blue-300 mt-13">&#8250;</button>
+              <button onClick={() => scrollBy(240)} className="block text-white p-2 text-5xl md:text-7xl font-bold hover:text-blue-300 mt-2 md:mt-13">&#8250;</button>
             </div>
           </div>
 
-          <div style={{ backgroundColor: '#29608A' }} className="text-white p-4 sm:p-6 text-lg sm:text-2xl pb-8 flex-1">
+          <div style={{ backgroundColor: '#29608A' }} className="text-white p-4  sm:p-6 text-lg sm:text-2xl pb-8 flex-1">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 flex items-center">
               <span className="mr-2 text-2xl sm:text-3xl">ℹ️</span>
               About Company
